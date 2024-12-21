@@ -11,7 +11,7 @@ namespace Mistletoe
 		Application();
 		virtual ~Application();
 
-		virtual void Run() = 0;
+		virtual void Run();
 	};
 
 	std::shared_ptr<Application> CreateApplication();

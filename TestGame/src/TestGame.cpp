@@ -10,7 +10,7 @@ public:
 
 	virtual void Run() override
 	{
-		printf("Stop!\n");
+		Mistletoe::Application::Run();
 	}
 };
 

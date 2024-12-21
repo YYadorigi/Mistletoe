@@ -9,7 +9,7 @@ namespace Mistletoe
 	// immediately gets dispatched and must be dealt with right then an there. For the
 	// future, a better strategy might be to buffer events in an event bus and process
 	// them during the "event" part of the update stage.
-	enum EventType
+	enum class EventType
 	{
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
@@ -30,7 +30,7 @@ namespace Mistletoe
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; } \
 								virtual EventType GetEventType() const override { return EventType::##type; } \
 								virtual const char* GetName() const override { return #type; }
-#define EVENT_CLASS_CATEGORY(category) virtual int GetEventCategoryFlags() const override { return static_cast<int>category; }
+#define EVENT_CLASS_CATEGORY(category) virtual int GetEventCategoryFlags() const override { return static_cast<int>(category); }
 
 	class Event
 	{
@@ -53,6 +53,23 @@ namespace Mistletoe
 
 	class EventDispatcher
 	{
-
+		template<typename T> using EventFn = std::function<bool(T&)>;
+	public:
+		EventDispatcher(Event& event) : event(event) {}
+		template<typename T> bool Dispatch(EventFn<T> func)
+		{
+			if (event.GetEventType() == T::GetStaticType()) {
+				event.handled = func(*(T*)&event);
+				return true;
+			}
+			return false;
+		}
+	private:
+		Event& event;
 	};
+
+	inline std::ostream& operator<<(std::ostream& os, const Event& e)
+	{
+		return os << e.ToString();
+	}
 }
