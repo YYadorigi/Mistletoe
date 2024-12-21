@@ -1,0 +1,3 @@
+[submodule "Mistletoe/third-party/spdlog"]
+	path = Mistletoe/third-party/spdlog
+	url = git@github.com:gabime/spdlog.git
