@@ -5,10 +5,6 @@ namespace Mistletoe
 	std::shared_ptr<spdlog::logger> Log::coreLogger;
 	std::shared_ptr<spdlog::logger> Log::clientLogger;
 
-	Log::Log() {}
-
-	Log::~Log() {}
-
 	void Log::Init()
 	{
 		spdlog::set_pattern("%^[%T] %n: %v%$");

@@ -4,17 +4,11 @@
 class TestGame : public Mistletoe::Application
 {
 public:
-	TestGame()
-	{
+	TestGame() {}
 
-	}
+	virtual ~TestGame() override {}
 
-	~TestGame() override
-	{
-
-	}
-
-	void Run() override
+	virtual void Run() override
 	{
 		printf("Stop!\n");
 	}

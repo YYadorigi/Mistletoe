@@ -17,8 +17,8 @@ namespace Mistletoe
 		static std::shared_ptr<spdlog::logger> coreLogger;
 		static std::shared_ptr<spdlog::logger> clientLogger;
 
-		Log();
-		~Log();
+		Log() = default;
+		~Log() = default;
 	};
 }
 
