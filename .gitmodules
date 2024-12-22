@@ -1,3 +1,6 @@
 [submodule "Mistletoe/third-party/spdlog"]
 	path = Mistletoe/third-party/spdlog
 	url = git@github.com:gabime/spdlog.git
+[submodule "Mistletoe/third-party/glfw"]
+	path = Mistletoe/third-party/glfw
+	url = git@github.com:YYadorigi/glfw.git

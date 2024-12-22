@@ -5,7 +5,7 @@ workspace "Mistletoe"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"	--e.g., Debug-Windows-x64
 appname = "TestGame"
 
-include "Mistletoe/third-party/premake5.lua"
+include "Mistletoe/third-party/glfw/premake5.lua"
 
 project "Mistletoe"
 	location "Mistletoe"
@@ -49,7 +49,7 @@ project "Mistletoe"
 		}
 
 		postbuildcommands {
-			("{MKDIR} bin/" .. outputdir .. "/" .. appname),
+			("{MKDIR} ../bin/" .. outputdir .. "/" .. appname),
 			("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/" .. appname),
 		}
 
