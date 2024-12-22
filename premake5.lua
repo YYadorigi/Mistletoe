@@ -1,9 +1,11 @@
 workspace "Mistletoe"
 	architecture "x64"
-	configurations { "Debug", "Release", "Distribution" }
+	configurations { "Debug", "Release" }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"	--e.g., Debug-Windows-x64
 appname = "TestGame"
+
+include "Mistletoe/third-party/premake5.lua"
 
 project "Mistletoe"
 	location "Mistletoe"
@@ -24,6 +26,12 @@ project "Mistletoe"
 	includedirs {
 		"%{prj.name}/src",
 		"%{prj.name}/third-party/spdlog/include",
+		"%{prj.name}/third-party/glfw/include",
+	}
+
+	links {
+		"glfw",
+		"opengl32.lib",
 	}
 
 	buildoptions {
@@ -47,14 +55,12 @@ project "Mistletoe"
 
 	filter "configurations:Debug"
 		defines "MST_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MST_RELEASE"
-		optimize "On"
-
-	filter "configurations:Distribution"
-		defines "MST_DISTRIBUTION"
+		runtime "Release"
 		optimize "On"
 
 project (appname)
@@ -75,12 +81,12 @@ project (appname)
 		"Mistletoe/third-party/spdlog/include",
 	}
 
-	buildoptions {
-		"/utf-8",
-	}
-
 	links {
 		"Mistletoe",
+	}
+
+	buildoptions {
+		"/utf-8",
 	}
 
 	filter "system:windows"
@@ -93,13 +99,9 @@ project (appname)
 		}
 
 	filter "configurations:Debug"
-		defines "MST_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "MST_RELEASE"
-		optimize "On"
-
-	filter "configurations:Distribution"
-		defines "MST_DISTRIBUTION"
+		runtime "Release"
 		optimize "On"
