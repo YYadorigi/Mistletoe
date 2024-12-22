@@ -36,6 +36,9 @@ namespace Mistletoe
 #define MST_WARN(...) Mistletoe::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define MST_ERROR(...) Mistletoe::Log::GetClientLogger()->error(__VA_ARGS__)
 #define MST_CRITICAL(...) Mistletoe::Log::GetClientLogger()->critical(__VA_ARGS__)
+// Assertion macros
+#define MST_CORE_ASSERT(x, ...) {if(!(x)) { MST_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define MST_ASSERT(x, ...) { if(!(x)) { MST_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else // Release mode or distribution version
 // Core log macros
 #define MST_CORE_TRACE(...)
@@ -49,4 +52,7 @@ namespace Mistletoe
 #define MST_WARN(...)
 #define MST_ERROR(...)
 #define MST_CRITICAL(...)
+// Assertion macros
+#define MST_CORE_ASSERT(x, ...)
+#define MST_ASSERT(x, ...)
 #endif

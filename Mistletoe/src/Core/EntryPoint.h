@@ -1,8 +1,7 @@
-#pragma once
-
 #ifdef MST_PLATFORM_WINDOWS
 int main(int argc, char** argv)
 {
+	Mistletoe::Log::Init();
 	auto app = Mistletoe::CreateApplication();
 	app->Run();
 	app.reset();
