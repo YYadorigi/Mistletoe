@@ -13,6 +13,9 @@ project "Mistletoe"
 	objdir ("bin/tmp/" .. outputdir .. "/%{prj.name}")
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "mstpch.h"
+	pchsource "%{prj.name}/src/mstpch.cpp"
+
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",

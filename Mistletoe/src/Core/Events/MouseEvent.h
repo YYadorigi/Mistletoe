@@ -1,5 +1,5 @@
 #pragma once
-#include <sstream>
+
 #include "Event.h"
 
 namespace Mistletoe
@@ -8,68 +8,58 @@ namespace Mistletoe
 	{
 	public:
 		inline int GetMouseButton() const { return buttonCode; }
-		EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryMouse | EventCategoryInput)
+		int GetCategoryFlags() const override;
 	protected:
-		MouseButtonEvent(int buttonCode) : buttonCode(buttonCode) {}
+		MouseButtonEvent(int buttonCode);
 		int buttonCode;
 	};
 
 	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(int buttonCode) : MouseButtonEvent(buttonCode) {}
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << buttonCode;
-			return ss.str();
-		}
-		EVENT_CLASS_TYPE(MouseButtonPressed)
+		MouseButtonPressedEvent(int buttonCode);
+		static EventType GetStaticType();
+		EventType GetType() const override;
+		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(int buttonCode) : MouseButtonEvent(buttonCode) {}
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "MouseButtonReleasedEvent: " << buttonCode;
-			return ss.str();
-		}
-		EVENT_CLASS_TYPE(MouseButtonReleased)
+		MouseButtonReleasedEvent(int buttonCode);
+		static EventType GetStaticType();
+		EventType GetType() const override;
+		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y) : x(x), y(y) {}
-		inline float GetX() const { return x; }
-		inline float GetY() const { return y; }
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "MouseMovedEvent: " << x << ", " << y;
-			return ss.str();
-		}
-		EVENT_CLASS_TYPE(MouseMoved) EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		MouseMovedEvent(float xPos, float yPos);
+		static EventType GetStaticType();
+		EventType GetType() const override;
+		int GetCategoryFlags() const override;
+		std::string GetName() const override;
+		std::string ToString() const override;
+		inline float GetX() const { return xPos; }
+		inline float GetY() const { return yPos; }
 	private:
-		float x, y;
+		float xPos, yPos;
 	};
 
 	class MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(float xOffset, float yOffset) : xOffset(xOffset), yOffset(yOffset) {}
+		MouseScrolledEvent(float xOffset, float yOffset);
+		static EventType GetStaticType();
+		EventType GetType() const override;
+		int GetCategoryFlags() const override;
+		std::string GetName() const override;
+		std::string ToString() const override;
 		inline float GetXOffset() const { return xOffset; }
 		inline float GetYOffset() const { return yOffset; }
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "MouseScrolledEvent: " << xOffset << ", " << yOffset;
-			return ss.str();
-		}
-		EVENT_CLASS_TYPE(MouseScrolled) EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float xOffset, yOffset;
 	};

@@ -1,4 +1,3 @@
-#include <memory>
 #include "Mistletoe.h"
 
 class TestGame : public Mistletoe::Application
@@ -6,9 +5,9 @@ class TestGame : public Mistletoe::Application
 public:
 	TestGame() {}
 
-	virtual ~TestGame() override {}
+	~TestGame() override {}
 
-	virtual void Run() override
+	void Run() override
 	{
 		Mistletoe::Application::Run();
 	}

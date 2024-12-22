@@ -1,5 +1,4 @@
 #pragma once
-#include <sstream>
 #include "Event.h"
 
 namespace Mistletoe
@@ -8,51 +7,42 @@ namespace Mistletoe
 	{
 	public:
 		inline int GetKeyCode() const { return keyCode; }
-		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
+		int GetCategoryFlags() const override;
 	protected:
-		KeyEvent(int keyCode) : keyCode(keyCode) {}
+		KeyEvent(int keyCode);
 		int keyCode;
 	};
 
 	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keyCode, int repeatCount) : KeyEvent(keyCode), repeatCount(repeatCount) {}
-		inline int GetRepeatCount() const { return repeatCount; }
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "KeyPressedEvent: " << keyCode << " (" << repeatCount << " repeats)";
-			return ss.str();
-		}
-		EVENT_CLASS_TYPE(KeyPressed)
+		KeyPressedEvent(int keyCode, bool repeated);
+		static EventType GetStaticType();
+		EventType GetType() const override;
+		std::string GetName() const override;
+		std::string ToString() const override;
+		inline bool IsRepeated() const { return repeated; }
 	private:
-		int repeatCount;
+		bool repeated;
 	};
 
 	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keyCode) : KeyEvent(keyCode) {}
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "KeyReleasedEvent: " << keyCode;
-			return ss.str();
-		}
-		EVENT_CLASS_TYPE(KeyReleased)
+		KeyReleasedEvent(int keyCode);
+		static EventType GetStaticType();
+		EventType GetType() const override;
+		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keyCode) : KeyEvent(keyCode) {}
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "KeyTypedEvent: " << keyCode;
-			return ss.str();
-		}
-		EVENT_CLASS_TYPE(KeyTyped)
+		KeyTypedEvent(int keyCode);
+		static EventType GetStaticType();
+		EventType GetType() const override;
+		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 }

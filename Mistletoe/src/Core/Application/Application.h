@@ -1,7 +1,6 @@
 #pragma once
-#include <stdio.h>
 #include <memory>
-#include "Core.h"
+#include "Core/Core.h"
 
 namespace Mistletoe
 {
