@@ -33,7 +33,9 @@ namespace Mistletoe
 		auto it = std::find(layers.begin(), layers.end(), layer);
 		if (it != layers.end()) {
 			layers.erase(it);
-			layerInsert--;
+			if (layerInsert != layers.begin() && layerInsert != layers.end()) {
+				layerInsert--;
+			}
 		}
 	}
 

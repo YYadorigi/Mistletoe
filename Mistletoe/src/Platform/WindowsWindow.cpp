@@ -23,27 +23,27 @@ namespace Mistletoe
 			glfwInitialized = true;
 		}
 
-		window.reset(glfwCreateWindow(data.props.width, data.props.height, data.props.title.c_str(), nullptr, nullptr));
-		glfwMakeContextCurrent(window.get());
-		glfwSetWindowUserPointer(window.get(), &this->data);
+		window = glfwCreateWindow(data.props.width, data.props.height, data.props.title.c_str(), nullptr, nullptr);
+		glfwMakeContextCurrent(window);
+		glfwSetWindowUserPointer(window, &this->data);
 		glfwSetCallbacks();
 	}
 
 	void WindowsWindow::glfwSetCallbacks()
 	{
-		glfwSetWindowCloseCallback(window.get(), [](GLFWwindow* window) {
+		glfwSetWindowCloseCallback(window, [](GLFWwindow* window) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			WindowCloseEvent event;
 			data.eventCallback(event);
 		});
 
-		glfwSetWindowSizeCallback(window.get(), [](GLFWwindow* window, int width, int height) {
+		glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			WindowResizeEvent event(width, height);
 			data.eventCallback(event);
 		});
 
-		glfwSetWindowFocusCallback(window.get(), [](GLFWwindow* window, int focused) {
+		glfwSetWindowFocusCallback(window, [](GLFWwindow* window, int focused) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			if (focused) {
 				WindowFocusEvent event;
@@ -54,7 +54,7 @@ namespace Mistletoe
 			}
 		});
 
-		glfwSetMouseButtonCallback(window.get(), [](GLFWwindow* window, int button, int action, int mods) {
+		glfwSetMouseButtonCallback(window, [](GLFWwindow* window, int button, int action, int mods) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			switch (action) {
 				case GLFW_PRESS:
@@ -72,19 +72,19 @@ namespace Mistletoe
 			}
 		});
 
-		glfwSetCursorPosCallback(window.get(), [](GLFWwindow* window, double xPos, double yPos) {
+		glfwSetCursorPosCallback(window, [](GLFWwindow* window, double xPos, double yPos) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			MouseMovedEvent event(static_cast<float>(xPos), static_cast<float>(yPos));
 			data.eventCallback(event);
 		});
 
-		glfwSetScrollCallback(window.get(), [](GLFWwindow* window, double xOffset, double yOffset) {
+		glfwSetScrollCallback(window, [](GLFWwindow* window, double xOffset, double yOffset) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			MouseScrolledEvent event(static_cast<float>(xOffset), static_cast<float>(yOffset));
 			data.eventCallback(event);
 		});
 
-		glfwSetKeyCallback(window.get(), [](GLFWwindow* window, int key, int scancode, int action, int mods) {
+		glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			switch (action) {
 				case GLFW_PRESS:
@@ -111,14 +111,13 @@ namespace Mistletoe
 
 	Mistletoe::WindowsWindow::~WindowsWindow()
 	{
-		glfwDestroyWindow(window.get());
-		window.reset();
+		glfwDestroyWindow(window);
 	}
 
 	void Mistletoe::WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(window.get());
+		glfwSwapBuffers(window);
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

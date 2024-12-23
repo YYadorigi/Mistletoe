@@ -17,7 +17,7 @@ namespace Mistletoe
 		window = nullptr;
 #endif
 		window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
-		// layerStack = LayerStack();
+		layerStack = LayerStack();
 		running = true;
 	}
 
@@ -33,7 +33,6 @@ namespace Mistletoe
 
 		MST_CORE_INFO("{0}", e.ToString());
 
-		/*
 		if (!layerStack.empty()) {
 			for (auto it = layerStack.end() - 1; it != layerStack.begin(); it--) {
 				(*it)->OnEvent(e);
@@ -42,10 +41,8 @@ namespace Mistletoe
 				}
 			};
 		}
-		*/
 	}
 
-	/*
 	void Application::PushLayer(const std::shared_ptr<Layer>& layer)
 	{
 		layerStack.PushLayer(layer);
@@ -55,18 +52,15 @@ namespace Mistletoe
 	{
 		layerStack.PushOverlay(overlay);
 	}
-	*/
 
 	void Application::Run()
 	{
 		while (running) {
-			/*
 			if (!layerStack.empty()) {
 				for (auto it = layerStack.begin(); it != layerStack.end(); it++) {
 					(*it)->OnUpdate();
 				};
 			}
-			*/
 
 			window->OnUpdate();
 		}

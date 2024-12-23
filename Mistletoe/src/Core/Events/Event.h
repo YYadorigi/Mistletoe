@@ -1,12 +1,11 @@
 #pragma once
-#include <functional>
 #include <string>
+#include <functional>
 #include "Core/Core.h"
 
 namespace Mistletoe
 {
 	template<typename T> using EventFn = std::function<bool(T&)>;
-
 	enum class EventType
 	{
 		None = 0,

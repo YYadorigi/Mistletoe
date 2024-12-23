@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(disable: 4251)
 #include "Core/Core.h"
 #include "Core/Window/Window.h"
 #include "Core/Layers/LayerStack.h"
@@ -13,13 +14,13 @@ namespace Mistletoe
 
 		void OnEvent(Event& e);
 
-		// void PushLayer(const std::shared_ptr<Layer>& layer);
-		// void PushOverlay(const std::shared_ptr<Layer>& overlay);
+		void PushLayer(const std::shared_ptr<Layer>& layer);
+		void PushOverlay(const std::shared_ptr<Layer>& overlay);
 
 		virtual void Run();
 	private:
 		std::unique_ptr<Window> window;
-		// LayerStack layerStack;
+		LayerStack layerStack;
 		bool running;
 	};
 

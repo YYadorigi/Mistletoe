@@ -15,6 +15,6 @@ namespace Mistletoe
 		void SetVSync(bool enabled) override;
 	private:
 		void glfwSetCallbacks();
-		std::shared_ptr<GLFWwindow> window;
+		GLFWwindow* window;
 	};
 }

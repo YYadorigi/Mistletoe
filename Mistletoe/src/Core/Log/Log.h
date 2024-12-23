@@ -1,6 +1,5 @@
 #pragma once
 #pragma warning(disable: 4251)
-
 #include "Core/Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
