@@ -11,6 +11,8 @@ namespace Mistletoe
 		Application();
 		virtual ~Application();
 
+		virtual void OnEvent(Event& e);
+
 		virtual void Run();
 	private:
 		std::unique_ptr<Window> window;
