@@ -10,6 +10,11 @@ namespace Mistletoe
 		LayerStack();
 		~LayerStack();
 
+		LayerStack(const LayerStack&) = default;
+		LayerStack& operator=(const LayerStack&) = default;
+		LayerStack(LayerStack&&) = default;
+		LayerStack& operator=(LayerStack&&) = default;
+
 		void PushLayer(const std::shared_ptr<Layer>& layer);
 		void PushOverlay(const std::shared_ptr<Layer>& overlay);
 		void PopLayer(const std::shared_ptr<Layer>& layer);

@@ -7,7 +7,12 @@ namespace Mistletoe
 	{
 	public:
 		Layer(const std::string& name = "Layer");
-		virtual ~Layer();
+		virtual ~Layer() = default;
+
+		Layer(const Layer&) = delete;
+		Layer& operator=(const Layer&) = delete;
+		Layer(Layer&&) = delete;
+		Layer& operator=(Layer&&) = delete;
 
 		virtual void OnAttach() = 0;
 		virtual void OnDetach() = 0;

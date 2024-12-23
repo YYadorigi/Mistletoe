@@ -12,6 +12,4 @@ namespace Mistletoe
 	WindowData::WindowData(const WindowProps& props) : props(props), vSync(false), eventCallback(nullptr) {}
 
 	Window::Window(const WindowProps& props) : data(props) {}
-
-	Window::~Window() {}
 }

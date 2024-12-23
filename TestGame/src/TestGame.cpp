@@ -3,9 +3,7 @@
 class TestGame : public Mistletoe::Application
 {
 public:
-	TestGame() {}
-
-	~TestGame() override {}
+	TestGame() : Application() {}
 
 	void Run() override
 	{

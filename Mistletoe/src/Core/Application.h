@@ -1,8 +1,8 @@
 #pragma once
 #pragma warning(disable: 4251)
-#include "Core/Core.h"
-#include "Core/Window/Window.h"
-#include "Core/Layers/LayerStack.h"
+#include "Core.h"
+#include "Window/Window.h"
+#include "Layers/LayerStack.h"
 
 namespace Mistletoe
 {
@@ -10,7 +10,6 @@ namespace Mistletoe
 	{
 	public:
 		Application();
-		virtual ~Application();
 
 		void OnEvent(Event& e);
 

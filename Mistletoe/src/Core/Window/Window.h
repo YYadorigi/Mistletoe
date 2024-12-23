@@ -26,7 +26,12 @@ namespace Mistletoe
 	{
 	public:
 		Window(const WindowProps& props = WindowProps());
-		virtual ~Window();
+		virtual ~Window() = default;
+
+		Window(const Window&) = delete;
+		Window& operator=(const Window&) = delete;
+		Window(Window&&) = delete;
+		Window& operator=(Window&&) = delete;
 
 		virtual void OnUpdate() = 0;
 

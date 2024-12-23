@@ -1,10 +1,10 @@
 #include "mstpch.h"
 #include "Application.h"
-#include "Core/Log/Log.h"
-#include "Core/Events/Event.h"
-#include "Core/Events/ApplicationEvent.h"
-#include "Core/Events/KeyEvent.h"
-#include "Core/Events/MouseEvent.h"
+#include "Log/Log.h"
+#include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
+#include "Events/MouseEvent.h"
 #include "Platform/WindowsWindow.h"
 
 namespace Mistletoe
@@ -17,11 +17,11 @@ namespace Mistletoe
 		window = nullptr;
 #endif
 		window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
+
 		layerStack = LayerStack();
+
 		running = true;
 	}
-
-	Application::~Application() {}
 
 	void Application::OnEvent(Event& e)
 	{

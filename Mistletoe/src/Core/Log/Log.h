@@ -9,6 +9,7 @@ namespace Mistletoe
 	class MST_API Log
 	{
 	public:
+		Log() = delete;
 		static void Init();
 		static void Shutdown();
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return coreLogger; }
@@ -16,9 +17,6 @@ namespace Mistletoe
 	private:
 		static std::shared_ptr<spdlog::logger> coreLogger;
 		static std::shared_ptr<spdlog::logger> clientLogger;
-
-		Log();
-		~Log();
 	};
 }
 
