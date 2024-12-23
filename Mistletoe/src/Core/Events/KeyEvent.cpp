@@ -23,11 +23,6 @@ namespace Mistletoe
 		return EventType::KeyPressed;
 	}
 
-	std::string KeyPressedEvent::GetName() const
-	{
-		return "KeyPressedEvent";
-	}
-
 	std::string KeyPressedEvent::ToString() const
 	{
 		std::stringstream ss;
@@ -47,39 +42,10 @@ namespace Mistletoe
 		return EventType::KeyReleased;
 	}
 
-	std::string KeyReleasedEvent::GetName() const
-	{
-		return "KeyReleasedEvent";
-	}
-
 	std::string KeyReleasedEvent::ToString() const
 	{
 		std::stringstream ss;
 		ss << "KeyReleasedEvent: " << keyCode;
-		return ss.str();
-	}
-
-	KeyTypedEvent::KeyTypedEvent(int keyCode) : KeyEvent(keyCode) {}
-
-	EventType KeyTypedEvent::GetStaticType()
-	{
-		return EventType::KeyTyped;
-	}
-
-	EventType KeyTypedEvent::GetType() const
-	{
-		return EventType::KeyTyped;
-	}
-
-	std::string KeyTypedEvent::GetName() const
-	{
-		return "KeyTypedEvent";
-	}
-
-	std::string KeyTypedEvent::ToString() const
-	{
-		std::stringstream ss;
-		ss << "KeyTypedEvent: " << keyCode;
 		return ss.str();
 	}
 }

@@ -1,7 +1,7 @@
 #pragma once
-#include <memory>
 #include "Core/Core.h"
 #include "Core/Window/Window.h"
+#include "Core/Layers/LayerStack.h"
 
 namespace Mistletoe
 {
@@ -11,11 +11,15 @@ namespace Mistletoe
 		Application();
 		virtual ~Application();
 
-		virtual void OnEvent(Event& e);
+		void OnEvent(Event& e);
+
+		// void PushLayer(const std::shared_ptr<Layer>& layer);
+		// void PushOverlay(const std::shared_ptr<Layer>& overlay);
 
 		virtual void Run();
 	private:
 		std::unique_ptr<Window> window;
+		// LayerStack layerStack;
 		bool running;
 	};
 

@@ -24,11 +24,6 @@ namespace Mistletoe
 		return EventType::MouseButtonPressed;
 	}
 
-	std::string Mistletoe::MouseButtonPressedEvent::GetName() const
-	{
-		return "MouseButtonPressedEvent";
-	}
-
 	std::string Mistletoe::MouseButtonPressedEvent::ToString() const
 	{
 		std::stringstream ss;
@@ -47,11 +42,6 @@ namespace Mistletoe
 	EventType Mistletoe::MouseButtonReleasedEvent::GetType() const
 	{
 		return EventType::MouseButtonReleased;
-	}
-
-	std::string Mistletoe::MouseButtonReleasedEvent::GetName() const
-	{
-		return "MouseButtonReleasedEvent";
 	}
 
 	std::string Mistletoe::MouseButtonReleasedEvent::ToString() const
@@ -79,11 +69,6 @@ namespace Mistletoe
 			| static_cast<int>(EventCategory::Input);
 	}
 
-	std::string Mistletoe::MouseMovedEvent::GetName() const
-	{
-		return "MouseMovedEvent";
-	}
-
 	std::string Mistletoe::MouseMovedEvent::ToString() const
 	{
 		std::stringstream ss;
@@ -107,11 +92,6 @@ namespace Mistletoe
 	{
 		return static_cast<int>(EventCategory::Mouse)
 			| static_cast<int>(EventCategory::Input);
-	}
-
-	std::string Mistletoe::MouseScrolledEvent::GetName() const
-	{
-		return "MouseScrolledEvent";
 	}
 
 	std::string Mistletoe::MouseScrolledEvent::ToString() const

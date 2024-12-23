@@ -9,7 +9,7 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class WindowResizeEvent : public Event
@@ -19,7 +19,6 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
 		std::string ToString() const override;
 		inline unsigned int GetWidth() const { return width; }
 		inline unsigned int GetHeight() const { return height; }
@@ -33,7 +32,7 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class WindowLostFocusEvent : public Event
@@ -42,7 +41,7 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class AppTickEvent : public Event
@@ -51,7 +50,7 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class AppUpdateEvent : public Event
@@ -60,7 +59,7 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 
 	class AppRenderEvent : public Event
@@ -69,6 +68,6 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
+		std::string ToString() const override;
 	};
 }

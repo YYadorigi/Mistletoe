@@ -6,6 +6,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"	--e.g., Debug-Wi
 appname = "TestGame"
 
 include "Mistletoe/third-party/glfw/premake5.lua"
+include "Mistletoe/third-party/glad/premake5.lua"
 
 project "Mistletoe"
 	location "Mistletoe"
@@ -27,10 +28,12 @@ project "Mistletoe"
 		"%{prj.name}/src",
 		"%{prj.name}/third-party/spdlog/include",
 		"%{prj.name}/third-party/glfw/include",
+		"%{prj.name}/third-party/glad/include",
 	}
 
 	links {
 		"glfw",
+		"glad",
 		"opengl32.lib",
 	}
 

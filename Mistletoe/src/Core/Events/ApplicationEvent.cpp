@@ -18,7 +18,7 @@ namespace Mistletoe
 		return static_cast<int>(EventCategory::Application);
 	}
 
-	std::string WindowCloseEvent::GetName() const
+	std::string WindowCloseEvent::ToString() const
 	{
 		return "WindowCloseEvent";
 	}
@@ -38,11 +38,6 @@ namespace Mistletoe
 	int WindowResizeEvent::GetCategoryFlags() const
 	{
 		return static_cast<int>(EventCategory::Application);
-	}
-
-	std::string WindowResizeEvent::GetName() const
-	{
-		return "WindowResizeEvent";
 	}
 
 	std::string WindowResizeEvent::ToString() const
@@ -67,7 +62,7 @@ namespace Mistletoe
 		return static_cast<int>(EventCategory::Application);
 	}
 
-	std::string WindowFocusEvent::GetName() const
+	std::string WindowFocusEvent::ToString() const
 	{
 		return "WindowFocusEvent";
 	}
@@ -87,7 +82,7 @@ namespace Mistletoe
 		return static_cast<int>(EventCategory::Application);
 	}
 
-	std::string WindowLostFocusEvent::GetName() const
+	std::string WindowLostFocusEvent::ToString() const
 	{
 		return "WindowLostFocusEvent";
 	}
@@ -107,7 +102,7 @@ namespace Mistletoe
 		return static_cast<int>(EventCategory::Application);
 	}
 
-	std::string AppTickEvent::GetName() const
+	std::string AppTickEvent::ToString() const
 	{
 		return "AppTickEvent";
 	}
@@ -127,7 +122,7 @@ namespace Mistletoe
 		return static_cast<int>(EventCategory::Application);
 	}
 
-	std::string AppUpdateEvent::GetName() const
+	std::string AppUpdateEvent::ToString() const
 	{
 		return "AppUpdateEvent";
 	}
@@ -147,7 +142,7 @@ namespace Mistletoe
 		return static_cast<int>(EventCategory::Application);
 	}
 
-	std::string AppRenderEvent::GetName() const
+	std::string AppRenderEvent::ToString() const
 	{
 		return "AppRenderEvent";
 	}

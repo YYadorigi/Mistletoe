@@ -17,13 +17,11 @@ namespace Mistletoe
 		window = nullptr;
 #endif
 		window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
+		// layerStack = LayerStack();
 		running = true;
 	}
 
-	Application::~Application()
-	{
-		window.reset();
-	}
+	Application::~Application() {}
 
 	void Application::OnEvent(Event& e)
 	{
@@ -32,66 +30,44 @@ namespace Mistletoe
 			running = false;
 			return true;
 		});
-		dispatcher.Dispatch<WindowResizeEvent>([this](WindowResizeEvent& e) {
-			MST_CORE_INFO("WindowResizeEvent: {0}, {1}", e.GetWidth(), e.GetHeight());
-			return true;
-		});
-		dispatcher.Dispatch<WindowFocusEvent>([this](WindowFocusEvent& e) {
-			MST_CORE_INFO("WindowFocusEvent");
-			return true;
-		});
-		dispatcher.Dispatch<WindowLostFocusEvent>([this](WindowLostFocusEvent& e) {
-			MST_CORE_INFO("WindowLostFocusEvent");
-			return true;
-		});
-		dispatcher.Dispatch<AppTickEvent>([this](AppTickEvent& e) {
-			MST_CORE_INFO("AppTickEvent");
-			return true;
-		});
-		dispatcher.Dispatch<AppUpdateEvent>([this](AppUpdateEvent& e) {
-			MST_CORE_INFO("AppUpdateEvent");
-			return true;
-		});
-		dispatcher.Dispatch<AppRenderEvent>([this](AppRenderEvent& e) {
-			MST_CORE_INFO("AppRenderEvent");
-			return true;
-		});
-		dispatcher.Dispatch<MouseButtonPressedEvent>([this](MouseButtonPressedEvent& e) {
-			MST_CORE_INFO("MouseButtonPressedEvent: {0}", e.GetMouseButton());
-			return true;
-		});
-		dispatcher.Dispatch<MouseButtonReleasedEvent>([this](MouseButtonReleasedEvent& e) {
-			MST_CORE_INFO("MouseButtonReleasedEvent: {0}", e.GetMouseButton());
-			return true;
-		});
-		dispatcher.Dispatch<MouseMovedEvent>([this](MouseMovedEvent& e) {
-			MST_CORE_INFO("MouseMovedEvent: {0}, {1}", e.GetX(), e.GetY());
-			return true;
-		});
-		dispatcher.Dispatch<MouseScrolledEvent>([this](MouseScrolledEvent& e) {
-			MST_CORE_INFO("MouseScrolledEvent: {0}, {1}", e.GetXOffset(), e.GetYOffset());
-			return true;
-		});
-		dispatcher.Dispatch<KeyPressedEvent>([this](KeyPressedEvent& e) {
-			if (e.IsRepeated())
-				MST_CORE_INFO("KeyPressedEvent: {0} (repeated)", e.GetKeyCode());
-			else
-				MST_CORE_INFO("KeyPressedEvent: {0}", e.GetKeyCode());
-			return true;
-		});
-		dispatcher.Dispatch<KeyReleasedEvent>([this](KeyReleasedEvent& e) {
-			MST_CORE_INFO("KeyReleasedEvent: {0}", e.GetKeyCode());
-			return true;
-		});
-		dispatcher.Dispatch<KeyTypedEvent>([this](KeyTypedEvent& e) {
-			MST_CORE_INFO("KeyTypedEvent: {0}", e.GetKeyCode());
-			return true;
-		});
+
+		MST_CORE_INFO("{0}", e.ToString());
+
+		/*
+		if (!layerStack.empty()) {
+			for (auto it = layerStack.end() - 1; it != layerStack.begin(); it--) {
+				(*it)->OnEvent(e);
+				if (e.IsHandled()) {
+					break;
+				}
+			};
+		}
+		*/
 	}
+
+	/*
+	void Application::PushLayer(const std::shared_ptr<Layer>& layer)
+	{
+		layerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(const std::shared_ptr<Layer>& overlay)
+	{
+		layerStack.PushOverlay(overlay);
+	}
+	*/
 
 	void Application::Run()
 	{
 		while (running) {
+			/*
+			if (!layerStack.empty()) {
+				for (auto it = layerStack.begin(); it != layerStack.end(); it++) {
+					(*it)->OnUpdate();
+				};
+			}
+			*/
+
 			window->OnUpdate();
 		}
 	}

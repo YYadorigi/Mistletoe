@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Event.h"
 
 namespace Mistletoe
@@ -20,7 +19,6 @@ namespace Mistletoe
 		MouseButtonPressedEvent(int buttonCode);
 		static EventType GetStaticType();
 		EventType GetType() const override;
-		std::string GetName() const override;
 		std::string ToString() const override;
 	};
 
@@ -30,7 +28,6 @@ namespace Mistletoe
 		MouseButtonReleasedEvent(int buttonCode);
 		static EventType GetStaticType();
 		EventType GetType() const override;
-		std::string GetName() const override;
 		std::string ToString() const override;
 	};
 
@@ -41,7 +38,6 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
 		std::string ToString() const override;
 		inline float GetX() const { return xPos; }
 		inline float GetY() const { return yPos; }
@@ -56,7 +52,6 @@ namespace Mistletoe
 		static EventType GetStaticType();
 		EventType GetType() const override;
 		int GetCategoryFlags() const override;
-		std::string GetName() const override;
 		std::string ToString() const override;
 		inline float GetXOffset() const { return xOffset; }
 		inline float GetYOffset() const { return yOffset; }

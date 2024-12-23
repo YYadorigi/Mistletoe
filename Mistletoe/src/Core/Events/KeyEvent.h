@@ -19,7 +19,6 @@ namespace Mistletoe
 		KeyPressedEvent(int keyCode, bool repeated);
 		static EventType GetStaticType();
 		EventType GetType() const override;
-		std::string GetName() const override;
 		std::string ToString() const override;
 		inline bool IsRepeated() const { return repeated; }
 	private:
@@ -32,17 +31,6 @@ namespace Mistletoe
 		KeyReleasedEvent(int keyCode);
 		static EventType GetStaticType();
 		EventType GetType() const override;
-		std::string GetName() const override;
-		std::string ToString() const override;
-	};
-
-	class KeyTypedEvent : public KeyEvent
-	{
-	public:
-		KeyTypedEvent(int keyCode);
-		static EventType GetStaticType();
-		EventType GetType() const override;
-		std::string GetName() const override;
 		std::string ToString() const override;
 	};
 }
