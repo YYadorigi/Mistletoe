@@ -18,6 +18,14 @@ namespace Mistletoe
 		}
 	}
 
+	LayerStack::LayerStack(const LayerStack&) = default;
+
+	LayerStack& LayerStack::operator=(const LayerStack&) = default;
+
+	LayerStack::LayerStack(LayerStack&&) = default;
+
+	LayerStack& LayerStack::operator=(LayerStack&&) = default;
+
 	void LayerStack::PushLayer(const std::shared_ptr<Layer>& layer)
 	{
 		layerInsert = layers.emplace(layerInsert, layer);

@@ -26,12 +26,7 @@ namespace Mistletoe
 	{
 	public:
 		Window(const WindowProps& props = WindowProps());
-		virtual ~Window() = default;
-
-		Window(const Window&) = delete;
-		Window& operator=(const Window&) = delete;
-		Window(Window&&) = delete;
-		Window& operator=(Window&&) = delete;
+		virtual ~Window();
 
 		virtual void OnUpdate() = 0;
 
@@ -43,6 +38,11 @@ namespace Mistletoe
 		inline bool GetVSync() const { return data.vSync; }
 
 		inline void SetEventCallback(const EventCallbackFn& callback) { data.eventCallback = callback; }
+	protected:
+		Window(const Window&);
+		Window& operator=(const Window&);
+		Window(Window&&);
+		Window& operator=(Window&&);
 	protected:
 		WindowData data;
 	};

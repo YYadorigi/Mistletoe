@@ -11,10 +11,10 @@ namespace Mistletoe
 		WindowsWindow(const WindowProps& props = WindowProps());
 		~WindowsWindow() override;
 
-		WindowsWindow(const WindowsWindow&) = default;
-		WindowsWindow& operator=(const WindowsWindow&) = default;
-		WindowsWindow(WindowsWindow&&) = default;
-		WindowsWindow& operator=(WindowsWindow&&) = default;
+		WindowsWindow(const WindowsWindow&);
+		WindowsWindow& operator=(const WindowsWindow&);
+		WindowsWindow(WindowsWindow&&);
+		WindowsWindow& operator=(WindowsWindow&&);
 
 		void OnUpdate() override;
 		void SetVSync(bool enabled) override;

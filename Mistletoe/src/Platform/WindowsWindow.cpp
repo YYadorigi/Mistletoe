@@ -114,6 +114,14 @@ namespace Mistletoe
 		glfwDestroyWindow(window);
 	}
 
+	WindowsWindow::WindowsWindow(const WindowsWindow&) = default;
+
+	WindowsWindow& WindowsWindow::operator=(const WindowsWindow&) = default;
+
+	WindowsWindow::WindowsWindow(WindowsWindow&&) = default;
+
+	WindowsWindow& WindowsWindow::operator=(WindowsWindow&&) = default;
+
 	void Mistletoe::WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
