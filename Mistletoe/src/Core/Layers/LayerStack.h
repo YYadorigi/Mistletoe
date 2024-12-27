@@ -8,12 +8,6 @@ namespace Mistletoe
 	{
 	public:
 		LayerStack();
-		~LayerStack();
-
-		LayerStack(const LayerStack&);
-		LayerStack& operator=(const LayerStack&);
-		LayerStack(LayerStack&&);
-		LayerStack& operator=(LayerStack&&);
 
 		void PushLayer(const std::shared_ptr<Layer>& layer);
 		void PushOverlay(const std::shared_ptr<Layer>& overlay);

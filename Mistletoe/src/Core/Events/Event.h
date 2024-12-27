@@ -44,6 +44,14 @@ namespace Mistletoe
 	{
 	public:
 		EventDispatcher(Event& event);
+		template<typename T> bool Dispatch(EventFn<T>& func)
+		{
+			if (event.GetType() == T::GetStaticType()) {
+				event.handled = func(*dynamic_cast<T*>(&event));
+				return true;
+			}
+			return false;
+		};
 		template<typename T> bool Dispatch(EventFn<T>&& func)
 		{
 			if (event.GetType() == T::GetStaticType()) {

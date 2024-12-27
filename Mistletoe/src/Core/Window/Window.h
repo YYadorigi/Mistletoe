@@ -34,7 +34,7 @@ namespace Mistletoe
 		inline unsigned int GetWidth() const { return data.props.width; }
 		inline unsigned int GetHeight() const { return data.props.height; }
 
-		inline virtual void SetVSync(bool enabled) { data.vSync = enabled; }
+		virtual void SetVSync(bool enabled) = 0;
 		inline bool GetVSync() const { return data.vSync; }
 
 		inline void SetEventCallback(const EventCallbackFn& callback) { data.eventCallback = callback; }

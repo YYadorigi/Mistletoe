@@ -3,21 +3,19 @@
 
 namespace Mistletoe
 {
-	std::shared_ptr<spdlog::logger> Log::coreLogger;
-	std::shared_ptr<spdlog::logger> Log::clientLogger;
-
-	void Log::Init()
+	Log::Log()
 	{
-		spdlog::set_pattern("%^[%T] %n: %v%$");
 		coreLogger = spdlog::stdout_color_mt("Mistletoe");
 		coreLogger->set_level(spdlog::level::trace);
 		clientLogger = spdlog::stdout_color_mt("Application");
 		clientLogger->set_level(spdlog::level::trace);
 	}
 
-	void Log::Shutdown()
+	Log::~Log() = default;
+
+	void Log::SetLogFormat(const std::string& format)
 	{
-		coreLogger.reset();
-		clientLogger.reset();
+		coreLogger->set_pattern(format);
+		clientLogger->set_pattern(format);
 	}
 }

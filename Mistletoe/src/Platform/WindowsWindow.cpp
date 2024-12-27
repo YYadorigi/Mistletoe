@@ -1,6 +1,6 @@
 #include "mstpch.h"
 #include "WindowsWindow.h"
-#include "Core/Log/Log.h"
+#include "Core/Log.h"
 #include "Core/Events/ApplicationEvent.h"
 #include "Core/Events/KeyEvent.h"
 #include "Core/Events/MouseEvent.h"
@@ -137,11 +137,11 @@ namespace Mistletoe
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
-		Window::SetVSync(enabled);
 		if (enabled) {
 			glfwSwapInterval(1);
 		} else {
 			glfwSwapInterval(0);
 		}
+		data.vSync = enabled;
 	}
 }

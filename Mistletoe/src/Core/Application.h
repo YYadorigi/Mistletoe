@@ -9,19 +9,29 @@ namespace Mistletoe
 	class MST_API Application
 	{
 	public:
-		Application();
+		~Application();
+		Application(const Application&) = delete;
+		Application& operator=(const Application&) = delete;
+		Application(Application&&) = delete;
+		Application& operator=(Application&&) = delete;
+
+		inline static Application& GetInstance()
+		{
+			static Application instance;
+			return instance;
+		}
 
 		void OnEvent(Event& e);
 
 		void PushLayer(const std::shared_ptr<Layer>& layer);
 		void PushOverlay(const std::shared_ptr<Layer>& overlay);
 
-		virtual void Run();
+		void Run();
 	private:
+		Application();
+
 		std::unique_ptr<Window> window;
-		LayerStack layerStack;
+		std::unique_ptr<LayerStack> layerStack;
 		bool running;
 	};
-
-	std::shared_ptr<Application> CreateApplication();
 }

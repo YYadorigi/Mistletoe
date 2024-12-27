@@ -33,7 +33,7 @@ namespace Mistletoe
 
 	void ImGuiLayer::OnUpdate()
 	{
-		ImGui_implOpenGL3_NewFrame();
+
 	}
 
 	void ImGuiLayer::OnEvent(Event& e)
