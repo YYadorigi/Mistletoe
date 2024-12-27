@@ -30,7 +30,7 @@ namespace Mistletoe
 		glfwSetWindowUserPointer(window, &this->data);
 
 		// Combine GLAD
-		int success = gladLoadGLLoader((const GLADloadproc)(&glfwGetProcAddress));
+		int success = gladLoadGLLoader((GLADloadproc)(&glfwGetProcAddress));
 		MST_CORE_ASSERT(success, "Failed to load GLAD!");
 
 		glfwSetCallbacks();
@@ -42,6 +42,7 @@ namespace Mistletoe
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 			WindowCloseEvent event;
 			data.eventCallback(event);
+			glfwDestroyWindow(window);
 		});
 
 		glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height) {
@@ -116,23 +117,10 @@ namespace Mistletoe
 		});
 	}
 
-	Mistletoe::WindowsWindow::~WindowsWindow()
-	{
-		glfwDestroyWindow(window);
-	}
-
-	WindowsWindow::WindowsWindow(const WindowsWindow&) = default;
-
-	WindowsWindow& WindowsWindow::operator=(const WindowsWindow&) = default;
-
-	WindowsWindow::WindowsWindow(WindowsWindow&&) = default;
-
-	WindowsWindow& WindowsWindow::operator=(WindowsWindow&&) = default;
-
 	void Mistletoe::WindowsWindow::OnUpdate()
 	{
-		glfwPollEvents();
 		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
