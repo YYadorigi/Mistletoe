@@ -7,6 +7,7 @@ appname = "TestGame"
 
 include "Mistletoe/third-party/glfw/premake5.lua"
 include "Mistletoe/third-party/glad/premake5.lua"
+include "Mistletoe/third-party/imgui/premake5.lua"
 
 project "Mistletoe"
 	location "Mistletoe"
@@ -29,11 +30,13 @@ project "Mistletoe"
 		"%{prj.name}/third-party/spdlog/include",
 		"%{prj.name}/third-party/glfw/include",
 		"%{prj.name}/third-party/glad/include",
+		"%{prj.name}/third-party/imgui",
 	}
 
 	links {
 		"glfw",
 		"glad",
+		"imgui",
 		"opengl32.lib",
 	}
 

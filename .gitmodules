@@ -4,3 +4,6 @@
 [submodule "Mistletoe/third-party/glfw"]
 	path = Mistletoe/third-party/glfw
 	url = git@github.com:YYadorigi/glfw.git
+[submodule "Mistletoe/third-party/imgui"]
+	path = Mistletoe/third-party/imgui
+	url = git@github.com:YYadorigi/imgui.git

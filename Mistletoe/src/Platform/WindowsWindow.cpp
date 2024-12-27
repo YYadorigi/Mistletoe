@@ -16,6 +16,7 @@ namespace Mistletoe
 
 	Mistletoe::WindowsWindow::WindowsWindow(const WindowProps& props) : Window(props)
 	{
+		// Initialize the GLFW library for all potential window instances
 		if (!glfwInitialized) {
 			int success = glfwInit();
 			MST_CORE_ASSERT(success, "Could not initialize GLFW!");
@@ -23,9 +24,15 @@ namespace Mistletoe
 			glfwInitialized = true;
 		}
 
+		// Create a window instance
 		window = glfwCreateWindow(data.props.width, data.props.height, data.props.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
 		glfwSetWindowUserPointer(window, &this->data);
+
+		// Combine GLAD
+		int success = gladLoadGLLoader((const GLADloadproc)(&glfwGetProcAddress));
+		MST_CORE_ASSERT(success, "Failed to load GLAD!");
+
 		glfwSetCallbacks();
 	}
 
