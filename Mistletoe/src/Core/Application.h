@@ -24,9 +24,13 @@ namespace Mistletoe
 		void OnEvent(Event& e);
 
 		void PushLayer(const std::shared_ptr<Layer>& layer);
+		void PushLayer(std::shared_ptr<Layer>&& layer);
 		void PushOverlay(const std::shared_ptr<Layer>& overlay);
+		void PushOverlay(std::shared_ptr<Layer>&& overlay);
 
 		void Run();
+
+		inline Window& GetWindow() { return *window; }
 	private:
 		Application();
 

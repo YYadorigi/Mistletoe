@@ -6,6 +6,7 @@
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 #include "Platform/Windows/WindowsWindow.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace Mistletoe
 {
@@ -50,7 +51,17 @@ namespace Mistletoe
 		layerStack->PushLayer(layer);
 	}
 
+	void Application::PushLayer(std::shared_ptr<Layer>&& layer)
+	{
+		layerStack->PushLayer(layer);
+	}
+
 	void Application::PushOverlay(const std::shared_ptr<Layer>& overlay)
+	{
+		layerStack->PushOverlay(overlay);
+	}
+
+	void Application::PushOverlay(std::shared_ptr<Layer>&& overlay)
 	{
 		layerStack->PushOverlay(overlay);
 	}

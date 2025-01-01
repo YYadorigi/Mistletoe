@@ -16,7 +16,17 @@ namespace Mistletoe
 		layerInsert = layers.emplace(layerInsert, layer);
 	}
 
+	void LayerStack::PushLayer(std::shared_ptr<Layer>&& layer)
+	{
+		layerInsert = layers.emplace(layerInsert, layer);
+	}
+
 	void LayerStack::PushOverlay(const std::shared_ptr<Layer>& overlay)
+	{
+		layers.emplace_back(overlay);
+	}
+
+	void LayerStack::PushOverlay(std::shared_ptr<Layer>&& overlay)
 	{
 		layers.emplace_back(overlay);
 	}

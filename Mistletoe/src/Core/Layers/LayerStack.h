@@ -10,7 +10,9 @@ namespace Mistletoe
 		LayerStack();
 
 		void PushLayer(const std::shared_ptr<Layer>& layer);
+		void PushLayer(std::shared_ptr<Layer>&& layer);
 		void PushOverlay(const std::shared_ptr<Layer>& overlay);
+		void PushOverlay(std::shared_ptr<Layer>&& overlay);
 		void PopLayer(const std::shared_ptr<Layer>& layer);
 		void PopOverlay(const std::shared_ptr<Layer>& overlay);
 
